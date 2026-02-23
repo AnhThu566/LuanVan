@@ -4,6 +4,7 @@ const ApiError = require("./app/api-error");
 
 // --- IMPORT CÁC ROUTE ---
 const authRouter = require("./app/routes/auth.route");
+const breedRouter = require("./app/routes/breed.route");
 
 
 const app = express();
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
 
 // --- ĐĂNG KÝ CÁC ROUTE ---
 app.use("/api/auth", authRouter);
+app.use("/api/breeds", breedRouter);
 
 // --- XỬ LÝ LỖI ---
 app.use((req, res, next) => {
