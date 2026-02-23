@@ -5,6 +5,8 @@ const ApiError = require("./app/api-error");
 // --- IMPORT CÁC ROUTE ---
 const authRouter = require("./app/routes/auth.route");
 const breedRouter = require("./app/routes/breed.route");
+const dogRouter = require("./app/routes/dog.route");
+const farmRouter = require("./app/routes/farm.route");
 
 
 const app = express();
@@ -19,6 +21,8 @@ app.get("/", (req, res) => {
 // --- ĐĂNG KÝ CÁC ROUTE ---
 app.use("/api/auth", authRouter);
 app.use("/api/breeds", breedRouter);
+app.use("/api/dogs", dogRouter);
+app.use("/api/farms", farmRouter);
 
 // --- XỬ LÝ LỖI ---
 app.use((req, res, next) => {
