@@ -6,8 +6,10 @@ const userSchema = new mongoose.Schema({
     fullName: String,
     gender: { type: String, enum: ["Nam", "Nữ", "Khác"] },
     birthday: Date,
+    phone: { type: String },
     avatar: String,
     email: { type: String, required: true, unique: true },
+    customerCode: { type: String },
     
     // Đóng vai trò gì trong hệ thống?
     role: { 

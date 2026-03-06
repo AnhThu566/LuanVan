@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const farmSchema = new mongoose.Schema({
+    // 👉 Bổ sung: Mã trại tự động (VD: T001, T002)
+    maTrai: { type: String, required: true, unique: true }, 
+
     name: { type: String, required: true },
     address: { type: String, required: true },
     phone: { type: String, required: true },

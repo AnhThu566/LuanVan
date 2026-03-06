@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const dogSchema = new mongoose.Schema({
+    maCho: { type: String, unique: true },
     name: { type: String, required: true }, // Tên bé chó (VD: LuLu)
     
     // LIÊN KẾT 1: Chó của trại nào?
@@ -19,14 +20,16 @@ const dogSchema = new mongoose.Schema({
 
     gender: { type: String, enum: ["Đực", "Cái"] },
     price: { type: Number, required: true }, 
-    description: String, 
+    description: String,
+    image: { type: String, required: true }, // Lưu đường dẫn ảnh
 
     // Trạng thái (Quan trọng nhất cho luồng Admin duyệt)
-    status: { 
-        type: String, 
-        enum: ["pending", "selling", "reserved", "sold", "stopped"], 
-        default: "pending" // Mặc định vừa đăng lên là chờ duyệt
-    }
+status: {
+    type: String,
+    enum: ["Chờ duyệt", "Đã duyệt", "Từ chối", "Đã đặt cọc", "Đã bán", "Ngừng bán"], 
+    default: "Chờ duyệt"
+},
+    rejectionReason: { type: String, default: "" }// Lý do từ chối (nếu có)
 }, { timestamps: true });
 
 dogSchema.method("toJSON", function() {

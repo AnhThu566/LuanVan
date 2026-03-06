@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
 const breedSchema = new mongoose.Schema({
+    // 👉 BỔ SUNG: Khóa chính phụ dùng để hiển thị cho Admin (VD: G001, G002)
+    maGiong: { type: String, required: true, unique: true }, 
+
     name: { type: String, required: true }, // Tên giống (Poodle, Husky...)
     description: String,                    // Mô tả đặc điểm
     origin: String,                         // Nguồn gốc (Pháp, VN...)

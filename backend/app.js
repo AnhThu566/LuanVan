@@ -7,12 +7,15 @@ const authRouter = require("./app/routes/auth.route");
 const breedRouter = require("./app/routes/breed.route");
 const dogRouter = require("./app/routes/dog.route");
 const farmRouter = require("./app/routes/farm.route");
+const customerRouter = require("./app/routes/customer.route");
 
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+// Cấp quyền truy cập công khai cho thư mục uploads
+app.use('/uploads', express.static('uploads'));
 
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to PetShop application." });
@@ -23,6 +26,8 @@ app.use("/api/auth", authRouter);
 app.use("/api/breeds", breedRouter);
 app.use("/api/dogs", dogRouter);
 app.use("/api/farms", farmRouter);
+app.use("/api/customers", customerRouter);
+
 
 // --- XỬ LÝ LỖI ---
 app.use((req, res, next) => {
@@ -34,5 +39,6 @@ app.use((err, req, res, next) => {
         message: err.message || "Internal Server Error",
     });
 });
+
 
 module.exports = app;
